@@ -18,7 +18,7 @@ public class CadastroController {
     @Autowired
     private ClienteService clienteService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://cybertron-cadastro.up.railway.app/")
     @PostMapping("/usuario")
     public ResponseEntity<RetornoDTO> cadastrarUsuario(@RequestBody ClienteDTO clienteDTO) {
         RetornoDTO retorno = clienteService.cadastrar(clienteDTO);
