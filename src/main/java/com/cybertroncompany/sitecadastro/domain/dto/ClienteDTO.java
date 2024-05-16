@@ -1,6 +1,5 @@
-package com.cybertroncompany.sitecadastro.model.dto;
+package com.cybertroncompany.sitecadastro.domain.dto;
 
-import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,4 +10,5 @@ public class ClienteDTO {
     private String nome;
     private String email;
     private String celular;
+    private String pacote;
 }

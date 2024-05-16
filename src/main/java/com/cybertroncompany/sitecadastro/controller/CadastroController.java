@@ -1,15 +1,13 @@
 package com.cybertroncompany.sitecadastro.controller;
 
-import com.cybertroncompany.sitecadastro.model.dto.ClienteDTO;
-import com.cybertroncompany.sitecadastro.model.dto.RetornoDTO;
+import com.cybertroncompany.sitecadastro.domain.dto.ClienteDTO;
+import com.cybertroncompany.sitecadastro.domain.dto.RetornoDTO;
 import com.cybertroncompany.sitecadastro.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(value = "/cadastra")
@@ -18,10 +16,24 @@ public class CadastroController {
     @Autowired
     private ClienteService clienteService;
 
-    @CrossOrigin(origins = "https://cybertron-cadastro.up.railway.app/")
+    //@PreAuthorize("hasAnyRole('ADMIN')")
+    //@CrossOrigin(origins = "https://cybertron-cadastro.up.railway.app/")
+    @CrossOrigin(origins = "http://localhost:3030")
     @PostMapping("/usuario")
     public ResponseEntity<RetornoDTO> cadastrarUsuario(@RequestBody ClienteDTO clienteDTO) {
         RetornoDTO retorno = clienteService.cadastrar(clienteDTO);
         return ResponseEntity.ok().body(retorno);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3030")
+    @GetMapping("/usuario")
+    public ResponseEntity<String> dados() {
+        String retorno = clienteService.generateNewApiKey();
+        return ResponseEntity.ok().body(retorno);
+    }
+
+    @GetMapping("/teste")
+    public ResponseEntity<String> teste() {
+        return ResponseEntity.ok().body("Deu Certo!");
     }
 }

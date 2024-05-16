@@ -1,6 +1,6 @@
-package com.cybertroncompany.sitecadastro.model.dto;
+package com.cybertroncompany.sitecadastro.domain.dto;
 
-import com.cybertroncompany.sitecadastro.model.ClienteModel;
+import com.cybertroncompany.sitecadastro.domain.Cliente;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,5 +12,5 @@ public class RetornoDTO {
 
     private String mensagem;
 
-    private ClienteModel cliente;
+    private Cliente cliente;
 }

@@ -1,17 +1,20 @@
-package com.cybertroncompany.sitecadastro.model;
+package com.cybertroncompany.sitecadastro.domain;
 
-import com.cybertroncompany.sitecadastro.model.dto.ClienteDTO;
-import jakarta.persistence.*;
+import com.cybertroncompany.sitecadastro.domain.dto.ClienteDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "cliente")
-public class ClienteModel {
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +29,7 @@ public class ClienteModel {
     @Column(name = "celular")
     private String celular;
 
-    public ClienteModel(ClienteDTO clienteDTO) {
+    public Cliente(ClienteDTO clienteDTO) {
        this.nome = clienteDTO.getNome();
        this.email = clienteDTO.getEmail();
        this.celular = clienteDTO.getCelular();
