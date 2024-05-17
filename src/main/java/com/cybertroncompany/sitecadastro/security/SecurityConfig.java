@@ -1,5 +1,7 @@
 package com.cybertroncompany.sitecadastro.security;
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,4 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI().addServersItem(new Server().url("http://localhost:3000"));
+              //  .addServersItem(new Server().url("http://localhost:3000"));
+    }
 }
