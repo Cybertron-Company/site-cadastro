@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         registry.addMapping("/**")
                 .allowedOrigins("*")
                 .allowedMethods("POST", "GET", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("API-Key", "Content-Type", "api-type")
+                .allowedHeaders("API-Key", "Content-Type", "api-type","Authorization", "Content-Type")
                 .exposedHeaders("API-Key", "api-type")
                 .allowCredentials(true);
     }
@@ -51,9 +51,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 		return new BCryptPasswordEncoder();
 	}
 
-    @Bean
-    public OpenAPI customOpenAPI() {
-        return new OpenAPI().addServersItem(new Server().url("http://localhost:3000"));
-              //  .addServersItem(new Server().url("http://localhost:3000"));
-    }
 }
