@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .csrf().disable()
                 .addFilterBefore(apiKeyAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/cadastra/usuario").permitAll()
+                .antMatchers("/").permitAll()
                 .anyRequest().authenticated();
     }
 
