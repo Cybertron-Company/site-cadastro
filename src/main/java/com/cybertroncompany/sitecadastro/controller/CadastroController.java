@@ -19,14 +19,14 @@ public class CadastroController {
     //@PreAuthorize("hasAnyRole('ADMIN')")
     //@CrossOrigin(origins = "https://cybertron-cadastro.up.railway.app/")
     @PostMapping("/usuario")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity<RetornoDTO> cadastrarUsuario(@RequestBody ClienteDTO clienteDTO) {
         RetornoDTO retorno = clienteService.cadastrar(clienteDTO);
         return ResponseEntity.ok().body(retorno);
     }
 
     @GetMapping("/usuario")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:3000/")
     public ResponseEntity<String> dados() {
         String retorno = clienteService.generateNewApiKey();
         return ResponseEntity.ok().body(retorno);
